@@ -1,0 +1,41 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Wall.io.Views.MainMenu">
+ 
+             <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                 
+
+                <Grid RowDefinitions="*" ColumnDefinitions="Auto Auto * Auto Auto">
+                
+                    <!-- Левая панель, тут будет левая колонка меню -->
+                    <Border Grid.Column="0" Padding="4" Background="Orange">
+                        <StackPanel x:Name="MainMenuTabsList" HorizontalAlignment="Center">
+                            
+                        </StackPanel>
+                    </Border>
+
+                    <GridSplitter Grid.Column="1"/>
+
+
+                    <!-- Центральная панель, тут будет содержимое текущей выбранной вкладки левого меню -->
+                    <Border Grid.Column="2"
+                        x:Name="MainMenuTabContentField" 
+                        VerticalAlignment="Top" 
+                        HorizontalAlignment="Center">
+                    
+                    </Border>
+
+                    <GridSplitter Grid.Column="3"/>
+
+                    <!-- Правая панель, пока не придумал назначение, скрыта-->
+                    <Border Grid.Column="4" IsVisible="False">
+                    
+                    </Border>
+                    
+                </Grid>
+
+             </Border>
+</UserControl>

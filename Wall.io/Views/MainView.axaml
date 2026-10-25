@@ -1,0 +1,19 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Wall.io.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Wall.io.Views.MainView"
+             x:DataType="vm:MainViewModel">
+    
+
+             <!-- Область для текущего отображаемого контрола -->
+             <ContentPresenter x:Name="MainContentPresenter"
+							    VerticalAlignment="Stretch"
+							    Background="Transparent"
+							    Width="{Binding Bounds.Width, ElementName=mainCanvasControl}"
+							    Height="{Binding Bounds.Height, ElementName=mainCanvasControl}"
+							    HorizontalAlignment="Stretch"
+							    Content="{Binding ChildContent, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+</UserControl>

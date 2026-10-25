@@ -1,0 +1,71 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Wall.io.StructuresAndDataClasses;
+using Wall.io.Views;
+
+namespace Wall.io.Controllers
+{
+    /// <summary>
+    /// Это фактически класс глобальных состояний и контроллеров.
+    /// Контроллеры оперируют с сервером.
+    /// </summary>
+    internal static class AppController
+    {
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////Свойства и поля///////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        public static MainView AppRootView;
+
+
+        /// <summary>
+        /// Состояние взаимодействия с сервером
+        /// </summary>
+        private static ServerState serverState = new();
+
+        private static MainMenuController MainMenuController = new MainMenuController();
+
+        /// <summary>
+        ///  инициализируется только во время игры
+        /// </summary>
+        private static GameSessionController GameSessionController = null;
+
+        
+        /// <summary>
+        /// Контроллер взаимодействия с сервером
+        /// </summary>
+        private static ServerController serverController = new ServerController(serverState);
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////Методы///////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+
+        /// <summary>
+        /// Проверка авторизации
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public static bool InvalidateUserLogin(string username, string password)
+        {
+            if (serverState.IsConnected)
+            {
+                return serverController.InvalidateUserLogin(username, password);
+            }
+
+            return false;
+        }
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////Обработчики событий/////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+    }
+}
